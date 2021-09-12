@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-ini
+  namespace: monitoring
+data:
+  grafana.ini: |
+    [server]
+      protocol = http
+      http_port = 3000
+    [analytics]
+      reporting_enabled = false
+      check_for_updates = true
+    [log.console]
+      level = debug
+    [paths]
+      data         = /data/grafana/data
+      logs         = /data/grafana/log/grafana
+      plugins      = /data/grafana/plugins
+      provisioning = /data/grafana/etc/grafana/provisioning
+    [database]
+    url = postgres://postgres:123123@my-psql-0.my-psql-headless.database.svc.cluster.local:5432/postgres

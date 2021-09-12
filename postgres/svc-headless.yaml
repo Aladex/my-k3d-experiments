@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-psql-headless
+  labels:
+    app.kubernetes.io/name: postgresql
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+  namespace: database
+spec:
+  type: ClusterIP
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+    - name: tcp-postgresql
+      port: 5432
+      targetPort: tcp-postgresql
+  selector:
+    app.kubernetes.io/name: postgresql
