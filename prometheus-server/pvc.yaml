@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-postgreql
-  namespace: database
+  name: pvc-prometheus-server
+  namespace: monitoring
 spec:
   storageClassName: local-path
   accessModes:
@@ -12,4 +12,4 @@ spec:
       storage: 8Gi
   selector:
     matchLabels:
-      id: postgresl
+      id: prometheus-server
